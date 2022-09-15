@@ -22,16 +22,10 @@ public class CartModal
 	
 	[FindsBy(How.XPath, @"//rz-cart-counter/div/input")]
 	public IList<IWebElement> InputQuantities;
-
 	[FindsBy(How.XPath, @"//p[contains(@class, 'product__price')]")]
 	public IList<IWebElement> Prices;
-
 	[FindsBy(How.XPath, @"//a[contains(@class, 'product__title')]")]
 	public IList<IWebElement> ItemNames;
-
-	[FindsBy(How.XPath, @"//div[@class='cart-receipt__sum-price']/span[1]")]
-	public IWebElement TotalDisplayed;
-
 	[FindsBy(How.XPath, @"//rz-popup-menu/button")]
 	public IList<IWebElement> DotsMenu;
 	
@@ -57,29 +51,6 @@ public class CartModal
 			.Select(ih => ih.Split("<")[0].Replace("&nbsp;", ""))
 			.Select(nstr => int.Parse(nstr))
 			).ToList();
-	}
-
-	public int CalculateTotalPrice(int[] quantities)
-	{
-		var prices = GetPrices();
-		if (prices.Count != quantities.Length)
-		{
-			Assert.Fail();
-		}
-
-		var iMax = prices.Count;
-		var total = 0;
-		for (var i = 0; i < iMax; i++)
-		{
-			total += prices[i] * quantities[i];
-		}
-
-		return total;
-	}
-
-	public int GetDisplayedTotal()
-	{
-		return int.Parse(TotalDisplayed.GetAttribute("innerHTML").Split(" ")[0]);
 	}
 
 	public void RemoveItemFromCart(int itemNumber)

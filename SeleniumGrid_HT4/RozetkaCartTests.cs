@@ -1,11 +1,9 @@
-using System.Reflection.Metadata;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 
 namespace SeleniumGrid_HT4;
 
 [Parallelizable(ParallelScope.Fixtures)]
-[TestFixture(BrowserType.ChromeLocal)]
+//[TestFixture(BrowserType.ChromeLocal)]
 [TestFixture(BrowserType.Chrome)]
 [TestFixture(BrowserType.Edge)]
 [TestFixture(BrowserType.Firefox)]

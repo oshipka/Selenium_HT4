@@ -11,7 +11,7 @@ public class ItemCatalogue
 	private IWebDriver _driver;
 	private WebDriverWait _wait;
 
-	private Dictionary<string, string> Categories = new Dictionary<string, string>
+	private Dictionary<string, string> Categories = new()
 	{
 		{ "Pots", @"https://rozetka.com.ua/ua/prigotovlenie-pishi/c4626599/" },
 		{ "Candles", @"https://rozetka.com.ua/ua/cvechi/c4636135/" },
@@ -86,12 +86,6 @@ public class ItemCatalogue
 	public string GetName(int numberOnPage)
 	{
 		return ItemNames[numberOnPage].GetAttribute("title");
-	}
-	
-	
-	public bool CartBtnIsVisible()
-	{
-		return CartBtn.Displayed;
 	}
 
 	public void ClickCartBtn()
